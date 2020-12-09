@@ -10,8 +10,8 @@ public class Mano {
 
     private static final int MAX_CARTAS = 5;
 
-    private List<Carta> manoOrdenada;
-    private List<Carta> manoSinOrden;
+    private final List<Carta> manoOrdenada;
+    private final List<Carta> manoSinOrden;
 
     public Mano(List<Carta> cartas) {
         this.manoSinOrden = new ArrayList<>(cartas);
