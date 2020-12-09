@@ -8,22 +8,22 @@ import java.util.List;
 
 public class Mano {
 
-    private static final int MAX_CARTAS = 5;
-
     private final List<Carta> manoOrdenada;
     private final List<Carta> manoSinOrden;
 
     public Mano(List<Carta> cartas) {
+        assert cartas.size() % 2 == 0;
         this.manoSinOrden = new ArrayList<>(cartas);
         this.manoOrdenada = new ArrayList<>(this.manoSinOrden);
         this.manoOrdenada.sort(Comparator.comparing(Carta::getValor));
     }
 
-    public Mano(String cartas, int n) {
+    public Mano(String cartas) {
         assert cartas.length() % 2 == 0;
+        int max = cartas.length() / 2;
         int i = 0;
         this.manoSinOrden = new ArrayList<>();
-        while (this.manoSinOrden.size() != Mano.MAX_CARTAS) {
+        while (this.manoSinOrden.size() != max) {
             Carta carta = new Carta(cartas.charAt(i), cartas.charAt(i + 1));
             if (!carta.esCartaValida())
                 throw new ParserException("Se ha encontrado al menos una carta que no es valida");
@@ -66,6 +66,13 @@ public class Mano {
         return new Mano(desOrd);
     }
 
+    public String toStringOrdenado(){
+        StringBuilder result = new StringBuilder();
+        for (Carta c : this.manoOrdenada) {
+            result.append(c);
+        }
+        return result.toString();
+    }
 
     @Override
     public String toString() {
