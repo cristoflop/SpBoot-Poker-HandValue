@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Carta {
 
-    private ValorCarta valor;
-    private ColorCarta color;
+    private final ValorCarta valor;
+    private final ColorCarta color;
 
     public Carta(char valor, char color) {
         this.valor = ValorCarta.parse(valor);
