@@ -8,8 +8,8 @@ import java.util.List;
 
 public abstract class Checker {
 
-    private Checker next;
-    private Jugada jugada;
+    protected Checker next;
+    protected Jugada jugada;
 
     public Checker linkWith(Checker next) {
         this.next = next;
@@ -19,11 +19,13 @@ public abstract class Checker {
     public abstract Jugada check(List<Carta> cartas);
 
     protected Jugada checkNext(List<Carta> cartas) {
-        if (next == null) {
+        if (this.next == null) {
             return null;
         }
         return next.check(cartas);
     }
 
-
+    public Jugada getJugada() {
+        return this.jugada;
+    }
 }
