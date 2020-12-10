@@ -1,5 +1,6 @@
 package es.cristoflop.poker.valormano.domain;
 
+import es.cristoflop.poker.valormano.domain.checkers.*;
 import es.cristoflop.poker.valormano.exception.ParserException;
 
 import java.util.ArrayList;
@@ -46,6 +47,18 @@ public class Mano {
         return this.manoSinOrden;
     }
 
+    public Jugada getJugada() {
+        Checker checker = new CheckerCartaAlta();
+        checker.linkWith(new CheckerPareja())
+                .linkWith(new CheckerDoblePareja())
+                .linkWith(new CheckerTrio())
+                .linkWith(new CheckerEscalera())
+                .linkWith(new CheckerColor())
+                .linkWith(new CheckerFull())
+                .linkWith(new CheckerPoker());
+
+        return checker.check(this.manoOrdenada);
+    }
 
     /**
      * metodo que devuelve un array para la salida del apartado 2
