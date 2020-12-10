@@ -26,7 +26,7 @@ public class CheckerColor extends Checker {
                 List<Carta> posibleColor = new ArrayList<>();
                 int j = i;
                 while (j >= 0 && posibleColor.size() < 5) {
-                    if (cartas.get(i).getColor() == cartas.get(j).getColor()) {
+                    if (cartas.get(i).suited(cartas.get(j))) {
                         marcados[j] = true;
                         posibleColor.add(cartas.get(j));
                     }
