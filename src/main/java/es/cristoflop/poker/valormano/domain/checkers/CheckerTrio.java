@@ -16,10 +16,10 @@ public class CheckerTrio extends Checker {
     protected List<Carta> cartasJugada(List<Carta> cartas) {
         List<Carta> trio = new ArrayList<>();
         int i = cartas.size() - 1;
-        boolean encontrado = false;
-        while (!encontrado && i > 2) {
+        boolean found = false;
+        while (i > 1 && !found) {
             if (cartas.get(i).getValor() == cartas.get(i - 2).getValor()) {
-                encontrado = true;
+                found = true;
                 trio.add(cartas.get(i));
                 trio.add(cartas.get(i - 1));
                 trio.add(cartas.get(i - 2));

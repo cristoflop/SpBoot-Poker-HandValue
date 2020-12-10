@@ -12,9 +12,8 @@ public class CheckerPareja extends Checker {
         this.valorJugada = ValorJugada.PAREJA;
     }
 
-    public List<Carta> cartasJugada(List<Carta> cartas) {
-        // las cartas estan ordenadas de peor a mejor valor de la carta
-        // mejor recorrer la lista al reves
+    @Override
+    protected List<Carta> cartasJugada(List<Carta> cartas) {
         List<Carta> par = new ArrayList<>();
         int i = cartas.size() - 1;
         boolean found = false;
