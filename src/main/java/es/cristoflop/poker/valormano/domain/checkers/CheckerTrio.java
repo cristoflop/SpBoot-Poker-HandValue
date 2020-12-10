@@ -24,7 +24,7 @@ public class CheckerTrio extends Checker {
                 trio.add(cartas.get(i - 1));
                 trio.add(cartas.get(i - 2));
             }
-            i++;
+            i--;
         }
         return trio;
     }
