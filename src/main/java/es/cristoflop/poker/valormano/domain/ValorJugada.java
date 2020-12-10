@@ -3,7 +3,7 @@ package es.cristoflop.poker.valormano.domain;
 public enum ValorJugada {
     CARTA_ALTA,
     PAREJA,
-    DOBLEPAREJA,
+    DOBLE_PAREJA,
     TRIO,
     ESCALERA,
     COLOR,
