@@ -104,6 +104,8 @@ public class ManoTest {
                 .add("Ah")
                 .add("4c")
                 .add("4d")
+                .add("2s")
+                .add("6h")
                 .build();
         Jugada jugada = mano.getJugada();
         assertEquals(jugada.getValorJugada(), ValorJugada.FULL);

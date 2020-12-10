@@ -29,4 +29,5 @@ public class CheckerDoblePareja extends Checker {
         }
         return numPairs == 2 ? dobles : Collections.emptyList();
     }
+
 }
