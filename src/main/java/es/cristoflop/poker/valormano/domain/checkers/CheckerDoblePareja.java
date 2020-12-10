@@ -8,7 +8,7 @@ import java.util.List;
 public class CheckerDoblePareja extends Checker {
 
     public CheckerDoblePareja() {
-        this.valorJugada = ValorJugada.DOBLEPAREJA;
+        this.valorJugada = ValorJugada.DOBLE_PAREJA;
     }
 
     @Override
