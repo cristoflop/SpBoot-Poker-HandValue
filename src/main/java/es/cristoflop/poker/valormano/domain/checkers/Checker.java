@@ -23,12 +23,11 @@ public abstract class Checker {
             List<Carta> cartasJugada = this.cartasJugada(cartas);
             if (cartasJugada != null && !cartasJugada.isEmpty()) {
                 return new Jugada(this.valorJugada, cartasJugada);
-            } else {
-                return new Jugada(cartas.get(cartas.size() - 1));
             }
         } else {
             return mejorJugada;
         }
+        return null;
     }
 
     protected Jugada checkNext(List<Carta> cartas) {
