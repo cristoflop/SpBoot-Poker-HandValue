@@ -10,5 +10,6 @@ public enum ValorJugada {
     COLOR,
     FULL,
     POKER,
-    ESCALERA_COLOR
+    ESCALERA_COLOR,
+    ESCALERA_REAL
 }

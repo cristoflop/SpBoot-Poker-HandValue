@@ -9,14 +9,27 @@ import java.util.List;
 public abstract class Checker {
 
     protected Checker next;
-    protected Jugada jugada;
+    protected ValorJugada valorJugada;
 
     public Checker linkWith(Checker next) {
         this.next = next;
         return next;
     }
 
-    public abstract Jugada check(List<Carta> cartas);
+    public Jugada check(List<Carta> cartas) {
+        assert cartas.size() > 0;
+        Jugada mejorJugada = this.checkNext(cartas);
+        if (mejorJugada == null) {
+            List<Carta> cartasJugada = this.cartasJugada(cartas);
+            if (cartasJugada != null && !cartasJugada.isEmpty()) {
+                return new Jugada(this.valorJugada, cartasJugada);
+            } else {
+                return new Jugada(cartas.get(cartas.size() - 1));
+            }
+        } else {
+            return mejorJugada;
+        }
+    }
 
     protected Jugada checkNext(List<Carta> cartas) {
         if (this.next == null) {
@@ -25,7 +38,6 @@ public abstract class Checker {
         return next.check(cartas);
     }
 
-    public Jugada getJugada() {
-        return this.jugada;
-    }
+    protected abstract List<Carta> cartasJugada(List<Carta> cartas);
+
 }

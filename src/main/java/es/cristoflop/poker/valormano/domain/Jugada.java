@@ -13,6 +13,12 @@ public class Jugada {
         this.cartasJugada = new ArrayList<>(cartasJugada);
     }
 
+    public Jugada(Carta carta) {
+        this.valorJugada = ValorJugada.CARTA_ALTA;
+        this.cartasJugada = new ArrayList<>();
+        this.cartasJugada.add(carta);
+    }
+
     public ValorJugada getValorJugada() {
         return this.valorJugada;
     }

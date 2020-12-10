@@ -1,33 +1,30 @@
 package es.cristoflop.poker.valormano.domain.checkers;
 
 import es.cristoflop.poker.valormano.domain.Carta;
-import es.cristoflop.poker.valormano.domain.Jugada;
+import es.cristoflop.poker.valormano.domain.ValorJugada;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CheckerPareja extends Checker {
 
-    @Override
-    public Jugada check(List<Carta> cartas) {
-
-        return null;
+    public CheckerPareja() {
+        this.valorJugada = ValorJugada.PAREJA;
     }
 
-    public List<Carta> pareja(List<Carta> cartas, int indice) {
+    public List<Carta> cartasJugada(List<Carta> cartas) {
+        // las cartas estan ordenadas de peor a mejor valor de la carta
+        // mejor recorrer la lista al reves
         List<Carta> par = new ArrayList<>();
-        int i = indice;
-        boolean encontrado = false;
-        while (!encontrado && i < cartas.size() - 1) {
-            if (cartas.get(i).getValor() == cartas.get(i + 1).getValor()) {
-                encontrado = true;
+        int i = cartas.size() - 1;
+        boolean found = false;
+        while (i > 0 && !found) {
+            if (cartas.get(i).getValor() == cartas.get(i - 1).getValor()) {
+                found = true;
                 par.add(cartas.get(i));
-                par.add(cartas.get(i + 1));
+                par.add(cartas.get(i - 1));
             }
-            i++;
-        }
-        if (par.size() != 2) {
-            par = null;
+            i--;
         }
         return par;
     }
