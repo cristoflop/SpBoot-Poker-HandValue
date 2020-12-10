@@ -15,7 +15,7 @@ public class CheckerCartaAlta extends Checker {
     @Override
     protected List<Carta> cartasJugada(List<Carta> cartas) {
         List<Carta> cartaAlta = new ArrayList<>();
-        cartaAlta.add(cartaAlta.get(cartaAlta.size() - 1));
+        cartaAlta.add(cartas.get(cartas.size() - 1));
         return cartaAlta;
     }
 }
