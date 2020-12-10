@@ -52,7 +52,8 @@ public class ManoTest {
                 .add("2c")
                 .add("2d")
                 .build();
-        assertEquals(mano.getJugada().getValorJugada(), ValorJugada.TRIO);
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.TRIO);
     }
 
     @Test
@@ -61,9 +62,12 @@ public class ManoTest {
                 .add("2s")
                 .add("4s")
                 .add("4c")
+                .add("3d")
                 .add("2d")
+                .add("Th")
                 .build();
-        assertEquals(mano.getJugada().getValorJugada(), ValorJugada.DOBLE_PAREJA);
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.DOBLE_PAREJA);
     }
 
     @Test
@@ -75,7 +79,8 @@ public class ManoTest {
                 .add("4c")
                 .add("5d")
                 .build();
-        assertEquals(mano.getJugada().getValorJugada(), ValorJugada.ESCALERA);
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.ESCALERA);
     }
 
     @Test
@@ -87,7 +92,8 @@ public class ManoTest {
                 .add("4s")
                 .add("8s")
                 .build();
-        assertEquals(mano.getJugada().getValorJugada(), ValorJugada.COLOR);
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.COLOR);
     }
 
     @Test
@@ -99,7 +105,8 @@ public class ManoTest {
                 .add("4c")
                 .add("4d")
                 .build();
-        assertEquals(mano.getJugada().getValorJugada(), ValorJugada.FULL);
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.FULL);
     }
 
     @Test
@@ -111,7 +118,8 @@ public class ManoTest {
                 .add("Ac")
                 .add("4d")
                 .build();
-        assertEquals(mano.getJugada().getValorJugada(), ValorJugada.POKER);
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.POKER);
     }
 
     @Test
@@ -123,7 +131,8 @@ public class ManoTest {
                 .add("4s")
                 .add("5s")
                 .build();
-        assertEquals(mano.getJugada().getValorJugada(), ValorJugada.ESCALERA_COLOR);
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.ESCALERA_COLOR);
     }
 
     @Test
@@ -135,7 +144,8 @@ public class ManoTest {
                 .add("Js")
                 .add("Ts")
                 .build();
-        assertEquals(mano.getJugada().getValorJugada(), ValorJugada.ESCALERA_REAL);
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.ESCALERA_REAL);
     }
 
 }
