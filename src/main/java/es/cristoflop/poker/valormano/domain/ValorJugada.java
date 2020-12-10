@@ -1,7 +1,6 @@
 package es.cristoflop.poker.valormano.domain;
 
 public enum ValorJugada {
-    NULL,
     CARTA_ALTA,
     PAREJA,
     DOBLEPAREJA,
@@ -11,5 +10,10 @@ public enum ValorJugada {
     FULL,
     POKER,
     ESCALERA_COLOR,
-    ESCALERA_REAL
+    ESCALERA_REAL;
+
+    @Override
+    public String toString() {
+        return this.name();
+    }
 }
