@@ -26,4 +26,10 @@ public class ManoTest {
         String orderedHand = "2s2d4sTs";
         assertEquals(orderedHand, this.mano.toStringOrdenado());
     }
+
+    @Test
+    public void testGivenHandWhenCheckPlayThenReturnPlay() {
+        assertEquals(this.mano.getJugada().getValorJugada(), ValorJugada.PAREJA);
+    }
+
 }
