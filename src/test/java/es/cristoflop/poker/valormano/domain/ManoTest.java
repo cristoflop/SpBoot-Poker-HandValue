@@ -97,6 +97,23 @@ public class ManoTest {
     }
 
     @Test
+    public void testOtherColor() {
+        Mano mano = new ManoBuilder()
+                .add("2s")
+                .add("3s")
+                .add("Ks")
+                .add("4s")
+                .add("8s")
+                .add("Jd")
+                .add("Ad")
+                .add("6d")
+                .add("9c")
+                .build();
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.COLOR);
+    }
+
+    @Test
     public void testFull() {
         Mano mano = new ManoBuilder()
                 .add("Ad")
