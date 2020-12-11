@@ -30,6 +30,13 @@ public enum ValorCarta {
         return ValorCarta.NULL;
     }
 
+    public boolean esSiguiente(ValorCarta valorCarta) {
+        if (this == ValorCarta.AS && valorCarta == ValorCarta.CINCO) {
+            return true;
+        }
+        return this.ordinal() == valorCarta.ordinal() + 1;
+    }
+
     @Override
     public String toString() {
         return "" + this.valor + "";

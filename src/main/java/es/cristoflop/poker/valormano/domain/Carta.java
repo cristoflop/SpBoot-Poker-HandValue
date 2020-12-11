@@ -28,6 +28,10 @@ public class Carta {
         return this.color == other.getColor();
     }
 
+    public boolean esSiguiente(Carta other) {
+        return this.getValor().esSiguiente(other.getValor());
+    }
+
     public ColorCarta getColor() {
         return this.color;
     }
