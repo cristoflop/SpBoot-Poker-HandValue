@@ -77,6 +77,8 @@ public class ManoTest {
                 .add("3s")
                 .add("Ah")
                 .add("4c")
+                .add("Ks")
+                .add("Kd")
                 .add("5d")
                 .build();
         Jugada jugada = mano.getJugada();
