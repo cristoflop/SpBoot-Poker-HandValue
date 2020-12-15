@@ -1,10 +1,10 @@
 ## SpBoot-Poker-HandValue
-#### Api rest con spring boot con diferentes opciones de evaluacion de manos de poker y comparacion de jugadas - ♥♦♠♣
+#### Api rest con spring boot con diferentes opciones de evaluacion de manos de poker y comparacion de jugadas
+###### ♥♦♠♣
 ---
 
-<img src="https://www.flaticon.com/free-icon/warning_2827410?term=under%20construction&page=2&position=66"
-     alt="Under construction"
-     style="float: left; margin-right: 10px;" />
+<img src="https://cdn.pixabay.com/photo/2017/06/20/08/12/maintenance-2422173_1280.png"
+     style="float: center; height: 1em; width: 1em;" />
      
 ### Autor
 [@cristoflop](https://github.com/cristoflop)
