@@ -1,6 +1,7 @@
 package es.cristoflop.poker.valormano.domain.checkers;
 
 import es.cristoflop.poker.valormano.domain.Carta;
+import es.cristoflop.poker.valormano.domain.Jugada;
 import es.cristoflop.poker.valormano.domain.ValorCarta;
 import es.cristoflop.poker.valormano.domain.ValorJugada;
 
@@ -19,21 +20,36 @@ public class CheckerEscalera extends Checker {
     }
 
     @Override
+    public Jugada check(List<Carta> cartas) {
+        assert cartas.size() > 0;
+        Jugada mejorJugada = this.checkNext(cartas);
+        List<Carta> cartasJugada = this.cartasJugada(cartas);
+        boolean hayEscalera = cartasJugada != null && !cartasJugada.isEmpty();
+        if (mejorJugada != null) {
+            if (hayEscalera) {
+                if (this.valorJugada.ordinal() > mejorJugada.getValorJugada().ordinal())
+                    return new Jugada(this.valorJugada, cartasJugada);
+                else
+                    return mejorJugada;
+            } else
+                return mejorJugada;
+        } else
+            return hayEscalera ? new Jugada(this.valorJugada, cartasJugada) : null;
+    }
+
+    @Override
     protected List<Carta> cartasJugada(List<Carta> cartas) {
         List<List<Carta>> posiblesEscaleras = new ArrayList<>();
-
         for (Carta carta : cartas) { // posibles escaleras de tamaño 1
             List<Carta> aux = new ArrayList<>();
             aux.add(carta);
             posiblesEscaleras.add(aux);
         }
-
         int tamEscaleras = 1;
         while (tamEscaleras < 5 && !posiblesEscaleras.isEmpty()) {
             posiblesEscaleras = this.addUnaCartaMasEnPosiblesEscalerasSiSePuede(posiblesEscaleras, cartas);
             tamEscaleras++;
         }
-
         return posiblesEscaleras.isEmpty() ? Collections.emptyList() : this.mejorEscalera(posiblesEscaleras);
     }
 
@@ -92,7 +108,7 @@ public class CheckerEscalera extends Checker {
     private boolean esEscaleraDeColor(List<Carta> cartas) {
         assert !cartas.isEmpty();
         for (int i = 1; i < cartas.size(); i++) {
-            if (cartas.get(i - 1).suited(cartas.get(i)))
+            if (!cartas.get(i - 1).suited(cartas.get(i)))
                 return false;
         }
         return true;

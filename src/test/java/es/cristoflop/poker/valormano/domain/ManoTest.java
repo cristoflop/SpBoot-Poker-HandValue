@@ -159,6 +159,10 @@ public class ManoTest {
     @Test
     public void testRealStair() {
         Mano mano = new ManoBuilder()
+                .add("4s")
+                .add("5s")
+                .add("Kd")
+                .add("Kh")
                 .add("As")
                 .add("Ks")
                 .add("Qs")
