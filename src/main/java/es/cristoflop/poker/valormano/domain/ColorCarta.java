@@ -10,7 +10,7 @@ public enum ColorCarta {
     private final char color;
 
     ColorCarta(char color) {
-        this.color = color;
+        this.color = Character.toLowerCase(color);
     }
 
     public static ColorCarta parse(char color) {

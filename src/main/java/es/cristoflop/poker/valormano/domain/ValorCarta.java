@@ -19,7 +19,7 @@ public enum ValorCarta {
     private final char valor;
 
     ValorCarta(char valor) {
-        this.valor = valor;
+        this.valor = Character.toUpperCase(valor);
     }
 
     public static ValorCarta parse(char valor) {
