@@ -17,7 +17,6 @@ public abstract class Checker {
     }
 
     public Jugada check(List<Carta> cartas) {
-        assert cartas.size() > 0;
         Jugada mejorJugada = this.checkNext(cartas);
         if (mejorJugada == null) {
             List<Carta> cartasJugada = this.cartasJugada(cartas);

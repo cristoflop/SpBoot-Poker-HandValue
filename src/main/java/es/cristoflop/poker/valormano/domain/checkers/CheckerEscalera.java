@@ -21,7 +21,6 @@ public class CheckerEscalera extends Checker {
 
     @Override
     public Jugada check(List<Carta> cartas) {
-        assert cartas.size() > 0;
         Jugada mejorJugada = this.checkNext(cartas);
         List<Carta> cartasJugada = this.cartasJugada(cartas);
         boolean hayEscalera = cartasJugada != null && !cartasJugada.isEmpty();
