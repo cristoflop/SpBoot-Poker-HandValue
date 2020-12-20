@@ -1,7 +1,5 @@
 package es.cristoflop.poker.valormano.domain;
 
-import es.cristoflop.poker.valormano.exception.ParserException;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -16,23 +14,6 @@ public class Mano {
     public Mano(List<Carta> cartas) {
         this.evaluadorManos = EvaluadorManos.getInstance();
         this.manoSinOrden = new ArrayList<>(cartas);
-        this.manoOrdenada = new ArrayList<>(this.manoSinOrden);
-        this.manoOrdenada.sort(Comparator.comparing(Carta::getValor));
-    }
-
-    public Mano(String cartas) {
-        assert cartas.length() % 2 == 0;
-        this.evaluadorManos = EvaluadorManos.getInstance();
-        int max = cartas.length() / 2;
-        int i = 0;
-        this.manoSinOrden = new ArrayList<>();
-        while (this.manoSinOrden.size() != max) {
-            Carta carta = new Carta(cartas.charAt(i), cartas.charAt(i + 1));
-            if (!carta.esCartaValida())
-                throw new ParserException("Se ha encontrado al menos una carta que no es valida");
-            manoSinOrden.add(carta);
-            i += 2;
-        }
         this.manoOrdenada = new ArrayList<>(this.manoSinOrden);
         this.manoOrdenada.sort(Comparator.comparing(Carta::getValor));
     }
