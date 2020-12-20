@@ -173,4 +173,13 @@ public class ManoTest {
         assertEquals(jugada.getValorJugada(), ValorJugada.ESCALERA_REAL);
     }
 
+    @Test
+    public void testNoCards() {
+        Mano mano = new ManoBuilder()
+                .build();
+        Jugada jugada = mano.getJugada();
+        assertEquals(jugada.getValorJugada(), ValorJugada.ESCALERA_REAL);
+    }
+
+
 }
