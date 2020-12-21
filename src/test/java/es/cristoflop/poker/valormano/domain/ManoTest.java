@@ -23,7 +23,7 @@ public class ManoTest {
 
     @Test
     public void testGivenHandWhenConvertToStringThenIsAscendOrdered() {
-        String orderedHand = "2s2d4sTs";
+        String orderedHand = "2d2s4sTs";
         assertEquals(orderedHand, this.mano.toStringOrdenado());
     }
 
@@ -165,6 +165,9 @@ public class ManoTest {
                 .add("Kh")
                 .add("As")
                 .add("Ks")
+                .add("2s")
+                .add("2s")
+                .add("2s")
                 .add("Qs")
                 .add("Js")
                 .add("Ts")
@@ -178,7 +181,7 @@ public class ManoTest {
         Mano mano = new ManoBuilder()
                 .build();
         Jugada jugada = mano.getJugada();
-        assertEquals(jugada.getValorJugada(), ValorJugada.ESCALERA_REAL);
+        assertEquals(jugada.getValorJugada(), ValorJugada.NULL);
     }
 
 

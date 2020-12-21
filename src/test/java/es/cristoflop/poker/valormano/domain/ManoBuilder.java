@@ -3,7 +3,9 @@ package es.cristoflop.poker.valormano.domain;
 import es.cristoflop.poker.valormano.exception.ParserException;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ManoBuilder {
 
@@ -23,7 +25,7 @@ public class ManoBuilder {
     }
 
     List<Carta> parse() {
-        List<Carta> cartas = new ArrayList<>();
+        Set<Carta> cartas = new HashSet<>();
 
         int size = this.cartas.length();
         if (size % 2 != 0) {
@@ -36,7 +38,7 @@ public class ManoBuilder {
             cartas.add(carta);
         }
 
-        return cartas;
+        return new ArrayList<>(cartas);
     }
 
 }
