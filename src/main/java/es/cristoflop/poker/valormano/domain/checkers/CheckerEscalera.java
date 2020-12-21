@@ -24,7 +24,7 @@ public class CheckerEscalera extends Checker {
         Jugada mejorJugada = this.checkNext(cartas);
         List<Carta> cartasJugada = this.cartasJugada(cartas);
         boolean hayEscalera = cartasJugada != null && !cartasJugada.isEmpty();
-        if (mejorJugada != null) {
+        if (!mejorJugada.isNull()) {
             if (hayEscalera) {
                 if (this.valorJugada.ordinal() > mejorJugada.getValorJugada().ordinal())
                     return new Jugada(this.valorJugada, cartasJugada);
@@ -33,7 +33,7 @@ public class CheckerEscalera extends Checker {
             } else
                 return mejorJugada;
         } else
-            return hayEscalera ? new Jugada(this.valorJugada, cartasJugada) : null;
+            return hayEscalera ? new Jugada(this.valorJugada, cartasJugada) : Jugada.nullJugada();
     }
 
     @Override

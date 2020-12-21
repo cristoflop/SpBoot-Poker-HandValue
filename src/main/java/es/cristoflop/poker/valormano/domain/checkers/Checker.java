@@ -18,7 +18,7 @@ public abstract class Checker {
 
     public Jugada check(List<Carta> cartas) {
         Jugada mejorJugada = this.checkNext(cartas);
-        if (mejorJugada == null) {
+        if (mejorJugada.isNull()) {
             List<Carta> cartasJugada = this.cartasJugada(cartas);
             if (cartasJugada != null && !cartasJugada.isEmpty()) {
                 return new Jugada(this.valorJugada, cartasJugada);
@@ -26,12 +26,12 @@ public abstract class Checker {
         } else {
             return mejorJugada;
         }
-        return null;
+        return Jugada.nullJugada();
     }
 
     protected Jugada checkNext(List<Carta> cartas) {
         if (this.next == null) {
-            return null;
+            return Jugada.nullJugada();
         }
         return next.check(cartas);
     }

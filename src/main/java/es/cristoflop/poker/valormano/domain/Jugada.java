@@ -1,6 +1,7 @@
 package es.cristoflop.poker.valormano.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Jugada {
@@ -13,10 +14,8 @@ public class Jugada {
         this.cartasJugada = new ArrayList<>(cartasJugada);
     }
 
-    public Jugada(Carta carta) {
-        this.valorJugada = ValorJugada.CARTA_ALTA;
-        this.cartasJugada = new ArrayList<>();
-        this.cartasJugada.add(carta);
+    public static Jugada nullJugada() {
+        return new Jugada(ValorJugada.NULL, Collections.emptyList());
     }
 
     public ValorJugada getValorJugada() {
@@ -25,6 +24,10 @@ public class Jugada {
 
     public List<Carta> getCartasJugada() {
         return this.cartasJugada;
+    }
+
+    public boolean isNull() {
+        return this.valorJugada == ValorJugada.NULL;
     }
 
 }
