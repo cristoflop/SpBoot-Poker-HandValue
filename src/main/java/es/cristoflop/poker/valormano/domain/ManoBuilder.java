@@ -15,16 +15,16 @@ public class ManoBuilder {
         this.cartas = new StringBuilder();
     }
 
-    ManoBuilder add(String carta) {
+    public ManoBuilder add(String carta) {
         this.cartas.append(carta);
         return this;
     }
 
-    Mano build() {
+    public Mano build() {
         return new Mano(this.parse());
     }
 
-    List<Carta> parse() {
+    private List<Carta> parse() {
         Set<Carta> cartas = new HashSet<>();
 
         int size = this.cartas.length();

@@ -1,5 +1,7 @@
 package es.cristoflop.poker.valormano.domain;
 
+import es.cristoflop.poker.valormano.exception.ParserException;
+
 import java.util.Objects;
 
 public class Carta {
@@ -10,6 +12,8 @@ public class Carta {
     public Carta(char valor, char color) {
         this.valor = ValorCarta.parse(valor);
         this.color = ColorCarta.parse(color);
+        if (this.valor == ValorCarta.NULL || this.color == ColorCarta.NULL)
+            throw new ParserException("El formato de la carta " + this.toString() + " no es valido");
     }
 
     private boolean esColorValido() {

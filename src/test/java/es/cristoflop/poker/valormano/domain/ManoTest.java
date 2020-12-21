@@ -24,7 +24,7 @@ public class ManoTest {
     @Test
     public void testGivenHandWhenConvertToStringThenIsAscendOrdered() {
         String orderedHand = "2d2s4sTs";
-        assertEquals(orderedHand, this.mano.toStringOrdenado());
+        assertEquals(orderedHand, this.mano.toString());
     }
 
     @Test
