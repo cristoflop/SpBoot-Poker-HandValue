@@ -2,10 +2,7 @@ package es.cristoflop.poker.valormano.application;
 
 import es.cristoflop.poker.valormano.application.dtos.JugadaDto;
 import es.cristoflop.poker.valormano.application.dtos.ManoDto;
-import es.cristoflop.poker.valormano.domain.Carta;
-import es.cristoflop.poker.valormano.domain.Jugada;
-import es.cristoflop.poker.valormano.domain.Mano;
-import es.cristoflop.poker.valormano.domain.ManoBuilder;
+import es.cristoflop.poker.valormano.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
@@ -18,7 +15,8 @@ public class JugadaService {
         Mano mano = new ManoBuilder()
                 .add(cartas)
                 .build();
-        Jugada jugada = mano.getJugada();
+        EvaluadorManos evaluador = EvaluadorManos.getInstance();
+        Jugada jugada = evaluador.evalua(mano);
         return this.mappedJugadaDto(jugada);
     }
 
