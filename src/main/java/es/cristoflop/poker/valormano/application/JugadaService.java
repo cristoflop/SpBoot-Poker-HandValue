@@ -14,10 +14,15 @@ import java.util.stream.Collectors;
 public class JugadaService {
 
     public JugadaDto getJugadaFromMano(ManoDto manoDto) {
+        String cartas = manoDto.getMano().trim();
         Mano mano = new ManoBuilder()
-                .add(manoDto.getMano().trim())
+                .add(cartas)
                 .build();
         Jugada jugada = mano.getJugada();
+        return this.mappedJugadaDto(jugada);
+    }
+
+    private JugadaDto mappedJugadaDto(Jugada jugada) {
         return new JugadaDto(
                 jugada.getValorJugada().toString(),
                 jugada.getCartasJugada().stream().map(Carta::toString).collect(Collectors.toList()));

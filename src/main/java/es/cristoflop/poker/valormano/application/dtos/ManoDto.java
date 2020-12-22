@@ -4,6 +4,9 @@ public class ManoDto {
 
     private String mano;
 
+    public ManoDto() {
+    }
+
     public ManoDto(String mano) {
         this.mano = mano;
     }
