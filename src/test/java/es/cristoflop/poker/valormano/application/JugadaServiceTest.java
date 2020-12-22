@@ -1,9 +1,9 @@
 package es.cristoflop.poker.valormano.application;
 
 import es.cristoflop.poker.valormano.application.dtos.ManoDto;
+import es.cristoflop.poker.valormano.domain.EvaluadorManos;
 import es.cristoflop.poker.valormano.domain.Mano;
 import es.cristoflop.poker.valormano.domain.ManoBuilder;
-import es.cristoflop.poker.valormano.domain.ValorJugada;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,13 +26,11 @@ public class JugadaServiceTest {
         Mano mano = new ManoBuilder()
                 .add(manoDto.getMano())
                 .build();
-        ValorJugada fromMano = mano
-                .getJugada()
-                .getValorJugada();
-        String fromService = this.jugadaService
-                .getJugadaFromMano(manoDto)
-                .getValorJugada();
-        assertEquals(fromMano.toString(), fromService);
+
+        String fromModel = EvaluadorManos.getInstance().evalua(mano).getValorJugada().toString();
+        String fromService = this.jugadaService.getJugadaFromMano(manoDto).getValorJugada();
+
+        assertEquals(fromModel, fromService);
     }
 
 }

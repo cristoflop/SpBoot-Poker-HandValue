@@ -9,22 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class ManoTest {
 
-    private Mano mano;
+    private EvaluadorManos evaluadorManos;
 
     @Before
     public void before() {
-        this.mano = new ManoBuilder()
-                .add("2s")
-                .add("4s")
-                .add("Ts")
-                .add("2d")
-                .build();
-    }
-
-    @Test
-    public void testGivenHandWhenConvertToStringThenIsAscendOrdered() {
-        String orderedHand = "2d2s4sTs";
-        assertEquals(orderedHand, this.mano.toString());
+        this.evaluadorManos = EvaluadorManos.getInstance();
     }
 
     @Test
@@ -36,12 +25,21 @@ public class ManoTest {
                 .add("4c")
                 .add("5d")
                 .build();
-        assertEquals(mano.getJugada().getValorJugada(), ValorJugada.CARTA_ALTA);
+        Jugada jugada = this.evaluadorManos.evalua(mano);
+        assertEquals(jugada.getValorJugada(), ValorJugada.CARTA_ALTA);
     }
 
     @Test
     public void testPair() {
-        assertEquals(this.mano.getJugada().getValorJugada(), ValorJugada.PAREJA);
+        Mano mano = new ManoBuilder()
+                .add("2s")
+                .add("3s")
+                .add("Kh")
+                .add("4c")
+                .add("2d")
+                .build();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
+        assertEquals(jugada.getValorJugada(), ValorJugada.PAREJA);
     }
 
     @Test
@@ -52,7 +50,7 @@ public class ManoTest {
                 .add("2c")
                 .add("2d")
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.TRIO);
     }
 
@@ -66,7 +64,7 @@ public class ManoTest {
                 .add("2d")
                 .add("Th")
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.DOBLE_PAREJA);
     }
 
@@ -81,7 +79,7 @@ public class ManoTest {
                 .add("Kd")
                 .add("5d")
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.ESCALERA);
     }
 
@@ -94,7 +92,7 @@ public class ManoTest {
                 .add("4s")
                 .add("8s")
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.COLOR);
     }
 
@@ -111,7 +109,7 @@ public class ManoTest {
                 .add("6d")
                 .add("9c")
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.COLOR);
     }
 
@@ -126,7 +124,7 @@ public class ManoTest {
                 .add("2s")
                 .add("6h")
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.FULL);
     }
 
@@ -139,7 +137,7 @@ public class ManoTest {
                 .add("Ac")
                 .add("4d")
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.POKER);
     }
 
@@ -152,7 +150,7 @@ public class ManoTest {
                 .add("4s")
                 .add("5s")
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.ESCALERA_COLOR);
     }
 
@@ -172,7 +170,7 @@ public class ManoTest {
                 .add("Js")
                 .add("Ts")
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.ESCALERA_REAL);
     }
 
@@ -180,9 +178,8 @@ public class ManoTest {
     public void testNoCards() {
         Mano mano = new ManoBuilder()
                 .build();
-        Jugada jugada = mano.getJugada();
+        Jugada jugada = this.evaluadorManos.evalua(mano);
         assertEquals(jugada.getValorJugada(), ValorJugada.NULL);
     }
-
 
 }
