@@ -6,28 +6,25 @@ import java.util.List;
 
 public class Mano {
 
-    private final List<Carta> manoOrdenada;
-
-    private final EvaluadorManos evaluadorManos;
+    private final List<Carta> cartas;
 
     public Mano(List<Carta> cartas) {
-        this.evaluadorManos = EvaluadorManos.getInstance();
-        this.manoOrdenada = new ArrayList<>(cartas);
-        this.manoOrdenada.sort(Comparator.comparing(Carta::getValor));
+        this.cartas = new ArrayList<>(cartas);
+        this.cartas.sort(Comparator.comparing(Carta::getValor));
     }
 
     public Carta getCarta(int pos) {
-        return this.manoOrdenada.get(pos);
+        return this.cartas.get(pos);
     }
 
-    public Jugada getJugada() {
-        return this.evaluadorManos.check(this.manoOrdenada);
+    public List<Carta> getCartas() {
+        return this.cartas;
     }
 
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for (Carta c : this.manoOrdenada) {
+        for (Carta c : this.cartas) {
             result.append(c);
         }
         return result.toString();

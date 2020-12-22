@@ -2,8 +2,6 @@ package es.cristoflop.poker.valormano.domain;
 
 import es.cristoflop.poker.valormano.domain.checkers.*;
 
-import java.util.List;
-
 public class EvaluadorManos {
 
     private static EvaluadorManos evaluadorManos;
@@ -27,8 +25,8 @@ public class EvaluadorManos {
         return evaluadorManos;
     }
 
-    public Jugada check(List<Carta> cartas) {
-        return this.checker.check(cartas);
+    public Jugada evalua(Mano mano) {
+        return this.checker.check(mano.getCartas());
     }
 
 }
