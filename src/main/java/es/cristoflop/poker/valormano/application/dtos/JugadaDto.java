@@ -1,13 +1,11 @@
 package es.cristoflop.poker.valormano.application.dtos;
 
-import java.util.List;
-
 public class JugadaDto {
 
     private String valorJugada;
-    private List<String> cartasJugada;
+    private String cartasJugada;
 
-    public JugadaDto(String valorJugada, List<String> cartasJugada) {
+    public JugadaDto(String valorJugada, String cartasJugada) {
         this.valorJugada = valorJugada;
         this.cartasJugada = cartasJugada;
     }
@@ -16,7 +14,7 @@ public class JugadaDto {
         return this.valorJugada;
     }
 
-    public List<String> getCartasJugada() {
+    public String getCartasJugada() {
         return this.cartasJugada;
     }
 

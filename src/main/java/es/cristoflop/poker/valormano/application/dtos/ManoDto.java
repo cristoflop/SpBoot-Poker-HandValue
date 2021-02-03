@@ -2,17 +2,17 @@ package es.cristoflop.poker.valormano.application.dtos;
 
 public class ManoDto {
 
-    private String mano;
+    private String cartas;
 
     public ManoDto() {
     }
 
-    public ManoDto(String mano) {
-        this.mano = mano;
+    public ManoDto(String cartas) {
+        this.cartas = cartas;
     }
 
-    public String getMano() {
-        return this.mano;
+    public String getCartas() {
+        return this.cartas;
     }
 
 }
