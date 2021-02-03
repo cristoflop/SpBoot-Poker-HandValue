@@ -6,6 +6,8 @@ import es.cristoflop.poker.valormano.application.dtos.ManoDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class JugadaController {
@@ -16,9 +18,14 @@ public class JugadaController {
         this.jugadaService = jugadaService;
     }
 
-    @PostMapping("/jugada")
-    public ResponseEntity<JugadaDto> getJugadaFromMano(@RequestBody ManoDto mano) {
-        JugadaDto jugadaDto = this.jugadaService.getJugadaFromMano(mano);
+    @GetMapping("/jugadas")
+    public ResponseEntity<List<JugadaDto>> getJugadas() {
+        return ResponseEntity.ok(this.jugadaService.getJugadas());
+    }
+
+    @PostMapping("/jugadas")
+    public ResponseEntity<JugadaDto> saveJugadaFromMano(@RequestBody ManoDto mano) {
+        JugadaDto jugadaDto = this.jugadaService.saveJugadaFromMano(mano);
         return ResponseEntity.ok(jugadaDto);
     }
 
