@@ -1,9 +1,7 @@
 package es.cristoflop.poker.valormano.data;
 
 import es.cristoflop.poker.valormano.domain.Jugada;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface JugadaRepository extends CrudRepository<Jugada, Long> {
+public interface JugadaRepository extends JpaRepository<Jugada, Long> {
 }
